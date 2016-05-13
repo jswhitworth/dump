@@ -22,6 +22,6 @@ file '/etc/rundeck/rundeck-config.properties' do
   dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/rundeckdb;MVCC=true;TRACE_LEVEL_FILE=4'
   owner 'rundeck'
   group 'rundeck'
-  mode '0600'
+  mode '0640'
   action :create
 end
