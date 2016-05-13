@@ -13,8 +13,13 @@ script 'extract_module' do
   URL='http://dl.bintray.com/rundeck/rundeck-deb/rundeck-2.6.7-1-GA.deb'; FILE=`mktemp`; sudo wget "$URL" -qO $FILE && sudo dpkg -i $FILE; rm $FILE
     EOH
 end
-cookbook_file '/etc/rundeck/rundeck-config.properties' do
-  source 'rundeck-config.properties'
+file '/etc/rundeck/rundeck-config.properties' do
+  content '
+  loglevel.default=INFO
+  rdeck.base=/var/lib/rundeck
+  rss.enabled=false
+  dataSource.dbCreate = update
+  dataSource.url = jdbc:h2:file:/var/lib/rundeck/data/rundeckdb;MVCC=true;TRACE_LEVEL_FILE=4'
   owner 'rundeck'
   group 'rundeck'
   mode '0600'
