@@ -1,0 +1,15 @@
+---
+driver:
+  name: digitalocean
+
+provisioner:
+  name: chef_solo
+platforms:
+- name: ubuntu-14.04
+  driver_config:
+    region: nyc2
+    size: 1gb
+
+suites:
+- name: default
+  run_list: recipe[ubuntu-init::default]
