@@ -12,4 +12,6 @@ platforms:
 
 suites:
 - name: default
-  run_list: recipe[ubuntu-init::default]
+  run_list:
+    - recipe[ubuntu-init::default]
+    - recipe[ubuntu-init::rundeck]
